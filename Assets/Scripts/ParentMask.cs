@@ -13,6 +13,8 @@ public class ParentMask : MonoBehaviour
 
     public float translateAmount = 20;
 
+    bool running = false;
+
     void Start()
     {
         childMasks = new List<ChildMask>(GetComponentsInChildren<ChildMask>());
@@ -21,8 +23,11 @@ public class ParentMask : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){
-            StartCoroutine(GoMovie());
+        if(Input.GetMouseButtonDown(0)){
+            if(!running){
+                StartCoroutine(GoMovie());
+                running = true;
+            }
         }
     }
 
